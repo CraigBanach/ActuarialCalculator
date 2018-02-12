@@ -3,55 +3,60 @@
     <b-col/>
     <b-col>
       <b-form>
-        <b-input-group v-bind:prepend="CapitalSelection">
-          <b-form-input id="principalInput"
-                        v-model="form.principal"
-                        type="number"
-                        required>
-          </b-form-input>
-          <template slot="append">
-            <b-dropdown text="Select">
-              <b-dropdown-item id="capitalDropdown"
-                               v-on:click="CapitalSelection = 'Initial Capital'">
-                Initial Capital
-              </b-dropdown-item>
-              <b-dropdown-item id="returnDropdown"
-                               v-on:click="CapitalSelection = 'Bond Value'">
-                Bond Value
-              </b-dropdown-item>
-            </b-dropdown>
-          </template>
-        </b-input-group>
-        <b-form-group id="rateLabel"
-                      label="Interest Rate:"
-                      label-for="rateInput"
-                      description="Enter Interest Rate as a decimal (i.e. 0.1)">
-          <b-form-input id="rateInput"
-                        type="number"
-                        v-model.number="form.rate"
-                        required
-                        placeholder="Enter Interest Rate">
-          </b-form-input>
-        </b-form-group>
-        <b-form-group id="termLabel"
-                      label="Investment Term:"
-                      label-for="termInput"
-                      description="Enter Investment Term in years (i.e. 4.5)">
-          <b-form-input id="termInput"
-                        type="number"
-                        v-model="form.term"
-                        required
-                        placeholder="Enter Investment Term">
-          </b-form-input>
-        </b-form-group>
+        <div class="input-div">
+          <b-input-group v-bind:prepend="CapitalSelection">
+            <b-form-input id="principalInput"
+                          v-model="form.principal"
+                          step="any"
+                          type="number"
+                          required>
+            </b-form-input>
+            <template slot="append">
+              <b-dropdown text="Select">
+                <b-dropdown-item id="capitalDropdown"
+                                 v-on:click="CapitalSelection = 'Initial Capital'">
+                  Initial Capital
+                </b-dropdown-item>
+                <b-dropdown-item id="returnDropdown"
+                                 v-on:click="CapitalSelection = 'Bond Value'">
+                  Bond Value
+                </b-dropdown-item>
+              </b-dropdown>
+            </template>
+          </b-input-group>
+        </div>
+        <div class="input-div">
+          <b-input-group prepend="Interest Rate"
+                         description="Enter Interest Rate as a decimal (i.e. 0.1)">
+            <b-form-input id="rateInput"
+                          type="number"
+                          v-model.number="form.rate"
+                          step="any"
+                          required>
+            </b-form-input>
+          </b-input-group>
+        </div>
+        <div class="input-div">
+          <b-input-group prepend="Investment Term"
+                         description="Enter Investment Term in years (i.e. 4.5)">
+            <b-form-input id="termInput"
+                          type="number"
+                          v-model="form.term"
+                          step="any"
+                          required>
+            </b-form-input>
+          </b-input-group>
+        </div>
+        <hr/>
         <b-form-group id="resultLabel"
                       v-bind:label="ResultLabel"
                       label-for="resultText">
-          <b-form-input id="resultText"
-                        type="number"
-                        plaintext
-                        variant="info"
-                        v-bind:value="resultValue"/>
+          <b-input-group prepend="£">
+            <b-form-input id="resultText"
+                          type="number"
+                          variant="info"
+                          v-bind:value="resultValue"/>
+          </b-input-group>
         </b-form-group>
         <b-form-group id="roundLabel"
                       label="Rounding:"
