@@ -1,7 +1,7 @@
 <template>
   <b-row>
-    <b-col md/>
-    <b-col md>
+    <b-col lg/>
+    <b-col lg>
       <b-form>
         <div class="input-div">
           <b-input-group v-bind:prepend="CapitalSelection">
@@ -67,8 +67,8 @@
           </b-form-radio-group>
         </b-form-group>
       </b-form>
-    </b-col md>
-    <b-col md/>
+    </b-col lg>
+    <b-col lg/>
   </b-row>
 </template>
 
