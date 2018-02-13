@@ -48,16 +48,6 @@
           </b-input-group>
         </div>
         <hr/>
-        <b-form-group id="resultLabel"
-                      v-bind:label="ResultLabel"
-                      label-for="resultText">
-          <b-input-group prepend="£">
-            <b-form-input id="resultText"
-                          type="number"
-                          variant="info"
-                          v-bind:value="resultValue"/>
-          </b-input-group>
-        </b-form-group>
         <b-form-group id="roundLabel"
                       label="Rounding:"
                       label-for="roundInput">
@@ -67,6 +57,16 @@
           </b-form-radio-group>
         </b-form-group>
       </b-form>
+      <hr/>
+      <h3>
+        Cashflow Analysis
+      </h3>
+      <p>
+        Initial outflow of capital: £{{InitialOutflow}}
+      </p>
+      <p>
+        Return after {{this.form.term}} years is: £{{Return}}
+      </p>
     </b-col lg>
     <b-col lg/>
   </b-row>
@@ -123,6 +123,20 @@ export default {
         return 'Return value after ' + this.form.term + ' years:'
       } else {
         return 'Present value of this bond:'
+      }
+    },
+    InitialOutflow: function () {
+      if (this.CapitalSelection === 'Initial Capital') {
+        return this.form.principal
+      } else {
+        return this.resultValue
+      }
+    },
+    Return: function () {
+      if (this.CapitalSelection === 'Initial Capital') {
+        return this.resultValue
+      } else {
+        return this.form.principal
       }
     }
   }

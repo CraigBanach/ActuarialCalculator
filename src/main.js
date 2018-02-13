@@ -8,7 +8,8 @@ Vue.use(BootstrapVue)
 Vue.use(VueRouter)
 
 const routes = [
-  {path: '/', component: ZeroCouponBond}
+  {path: '/zero-coupon-bond', component: ZeroCouponBond},
+  {path: '*', component: ZeroCouponBond}
 ]
 
 const router = new VueRouter({
